@@ -6,7 +6,6 @@
 <title>NEMEX Laboratory | Department of Physics, IIT Hyderabad</title>
 <meta name="description" content="NEMEX Laboratory at IIT Hyderabad researches nanophotonics and energy materials for solar water desalination, green hydrogen production, and radiative cooling.">
 
-<!-- Fonts: Newsreader (editorial serif for headings) + Inter (workhorse sans for UI/body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,17 +20,17 @@
           sans: ['Inter', 'system-ui', 'sans-serif'],
         },
         colors: {
-          ink: '#0B0E14',
-          surface: '#10141C',
-          panel: '#151A24',
-          card: '#1A2029',
-          hair: 'rgba(255,255,255,0.08)',
-          hair2: 'rgba(255,255,255,0.14)',
+          ink: '#0F172A',
+          surface: '#EFF6FF',
+          panel: '#FFFFFF',
+          card: '#FFFFFF',
+          hair: 'rgba(15,23,42,0.08)',
+          hair2: 'rgba(15,23,42,0.14)',
           gold: {
-            300: '#EACB8B',
-            400: '#DDB064',
-            500: '#C89A4B',
-            600: '#A97D34',
+            300: '#93C5FD',
+            400: '#60A5FA',
+            500: '#3B82F6',
+            600: '#2563EB',
           },
         },
       },
@@ -40,208 +39,84 @@
 </script>
 
 <style>
-  :root{
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
+  :root{ --ease: cubic-bezier(0.22, 1, 0.36, 1); }
   * { -webkit-tap-highlight-color: transparent; }
-
   html { scroll-behavior: smooth; }
-
-  body{
-    background-color: #0B0E14;
-    color: #ADB4C0;
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
-  ::selection{ background: rgba(200,154,75,0.35); color: #fff; }
-
-  /* Scrollbar */
+  body{ background-color: #FFFFFF; color: #475569; font-family: 'Inter', system-ui, sans-serif; }
+  ::selection{ background: rgba(59,130,246,0.35); color: #0F172A; }
   ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #0B0E14; }
-  ::-webkit-scrollbar-thumb { background: #2A3140; border-radius: 999px; border: 2px solid #0B0E14; }
-  ::-webkit-scrollbar-thumb:hover { background: #C89A4B; }
-
-  /* Keyboard focus visibility everywhere */
+  ::-webkit-scrollbar-track { background: #F1F5F9; }
+  ::-webkit-scrollbar-thumb { background: #93C5FD; border-radius: 999px; border: 2px solid #F1F5F9; }
+  ::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
-    outline: 2px solid #DDB064;
-    outline-offset: 3px;
-    border-radius: 4px;
+    outline: 2px solid #3B82F6; outline-offset: 3px; border-radius: 4px;
   }
-
   h1, h2, h3, h4, .font-display { font-family: 'Newsreader', Georgia, serif; }
-
-  /* ---- The spectrum device: the lab's one recurring visual signature ----
-     A muted rendering of the visible spectrum, used as a wayfinding motif
-     instead of a generic gradient bar. Ties directly to the lab's subject
-     (light-matter interaction) rather than decorating arbitrarily. */
-  .spectrum-bar{
-    background: linear-gradient(90deg,
-      #5B4E86 0%,
-      #3E6FA0 22%,
-      #3D8C82 42%,
-      #C89A4B 58%,
-      #C17D3E 76%,
-      #A2504A 100%);
-  }
-  .spectrum-tick{
-    width: 3px;
-    border-radius: 2px;
-    background: linear-gradient(180deg, #5B4E86, #3E6FA0 30%, #3D8C82 55%, #C89A4B 75%, #A2504A 100%);
-  }
-
-  /* Section heading pattern: left-aligned, tick + label, no centered eyebrow clutter */
+  .spectrum-bar{ background: linear-gradient(90deg, #5B4E86 0%, #3E6FA0 22%, #7DD3FC 42%, #C89A4B 58%, #C17D3E 76%, #A2504A 100%); }
+  .spectrum-tick{ width: 3px; border-radius: 2px; background: linear-gradient(180deg, #5B4E86, #3E6FA0 30%, #7DD3FC 55%, #C89A4B 75%, #A2504A 100%); }
   .section-head{ display:flex; align-items:flex-start; gap:1rem; }
   .section-head .tick{ height: 2.75rem; margin-top: 0.35rem; }
-
-  /* Soft ambient glows — static, CSS-only, replaces the old particle canvas */
   .glow{ position:absolute; border-radius:9999px; filter: blur(90px); pointer-events:none; }
-
-  /* Cards */
-  .lab-card{
-    background: #1A2029;
-    border: 1px solid var(--hair, rgba(255,255,255,0.08));
-    border-radius: 16px;
-    transition: transform 320ms var(--ease), border-color 320ms var(--ease), box-shadow 320ms var(--ease);
-  }
-  .lab-card:hover{
-    transform: translateY(-4px);
-    border-color: rgba(221,176,100,0.35);
-    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .lab-card:hover{ transform:none; }
-  }
-
-  /* Buttons — deliberate, restrained scale: rectangular w/ small radius (institutional, not pill-SaaS) */
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
-    font-family:'Inter',sans-serif; font-weight:600; font-size:0.9375rem;
-    padding: 0.85rem 1.6rem; border-radius: 10px;
-    transition: transform 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease);
-    will-change: transform;
-  }
+  .lab-card{ background: #FFFFFF; border: 1px solid var(--hair, rgba(15,23,42,0.08)); border-radius: 16px; box-shadow: 0 1px 3px rgba(15,23,42,0.05); transition: transform 320ms var(--ease), border-color 320ms var(--ease), box-shadow 320ms var(--ease); }
+  .lab-card:hover{ transform: translateY(-4px); border-color: rgba(59,130,246,0.35); box-shadow: 0 20px 40px -20px rgba(15,23,42,0.25); }
+  @media (prefers-reduced-motion: reduce){ .lab-card:hover{ transform:none; } }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; font-family:'Inter',sans-serif; font-weight:600; font-size:0.9375rem; padding: 0.85rem 1.6rem; border-radius: 10px; transition: transform 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease); will-change: transform; }
   .btn:active{ transform: scale(0.97); }
-  .btn-primary{
-    background: linear-gradient(180deg,#DDB064,#C89A4B);
-    color: #14100A;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 24px -12px rgba(200,154,75,0.55);
-  }
-  .btn-primary:hover{ background: linear-gradient(180deg,#EACB8B,#DDB064); box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 14px 28px -12px rgba(200,154,75,0.65); }
-  .btn-secondary{
-    background: transparent; color:#E7E9EE; border: 1px solid rgba(255,255,255,0.16);
-  }
-  .btn-secondary:hover{ border-color: rgba(221,176,100,0.5); background: rgba(255,255,255,0.03); }
-
-  /* Reveal-on-scroll: one restrained treatment, fast & subtle */
+  .btn-primary{ background: linear-gradient(180deg,#3B82F6,#2563EB); color: #FFFFFF; box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 24px -12px rgba(37,99,235,0.45); }
+  .btn-primary:hover{ background: linear-gradient(180deg,#60A5FA,#3B82F6); box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset, 0 14px 28px -12px rgba(37,99,235,0.55); }
+  .btn-secondary{ background: transparent; color:#1E293B; border: 1px solid rgba(15,23,42,0.15); }
+  .btn-secondary:hover{ border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.05); }
   .reveal{ opacity:0; transform: translateY(16px); transition: opacity 550ms var(--ease), transform 550ms var(--ease); }
   .reveal.in{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
-  }
-
-  /* Nav */
-  #site-nav{ background: rgba(11,14,20,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-  .nav-link{ position:relative; color:#9AA2B1; font-size:0.875rem; font-weight:500; transition: color 200ms var(--ease); }
-  .nav-link::after{
-    content:''; position:absolute; left:0; right:0; bottom:-6px; height:1px;
-    background:#DDB064; transform: scaleX(0); transform-origin:left; transition: transform 220ms var(--ease);
-  }
-  .nav-link:hover{ color:#EDEFF3; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+  #site-nav{ background: rgba(255,255,255,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .nav-link{ position:relative; color:#64748B; font-size:0.875rem; font-weight:500; transition: color 200ms var(--ease); }
+  .nav-link::after{ content:''; position:absolute; left:0; right:0; bottom:-6px; height:1px; background:#3B82F6; transform: scaleX(0); transform-origin:left; transition: transform 220ms var(--ease); }
+  .nav-link:hover{ color:#0F172A; }
   .nav-link:hover::after{ transform: scaleX(1); }
-
-  /* Mobile menu: smooth grid-based expand instead of abrupt hidden/shown toggle */
-  #mobile-menu{
-    display:grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease);
-    overflow:hidden;
-  }
+  #mobile-menu{ display:grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease); overflow:hidden; }
   #mobile-menu.open{ grid-template-rows: 1fr; }
   #mobile-menu > div{ min-height:0; overflow:hidden; }
-
-  .skip-link{
-    position:absolute; left:1rem; top:-3rem; background:#DDB064; color:#14100A; font-weight:600;
-    padding:0.6rem 1rem; border-radius:8px; z-index:200; transition: top 200ms var(--ease);
-  }
+  .skip-link{ position:absolute; left:1rem; top:-3rem; background:#2563EB; color:#FFFFFF; font-weight:600; padding:0.6rem 1rem; border-radius:8px; z-index:200; transition: top 200ms var(--ease); }
   .skip-link:focus{ top:1rem; }
-
-  /* ---------------- Chatbot ---------------- */
-  #chat-launcher{
-    box-shadow: 0 12px 28px -10px rgba(200,154,75,0.5);
-    transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
-  }
+  #chat-launcher{ box-shadow: 0 12px 28px -10px rgba(37,99,235,0.5); transition: transform 220ms var(--ease), box-shadow 220ms var(--ease); }
   #chat-launcher:hover{ transform: translateY(-2px) scale(1.03); }
   #chat-launcher:active{ transform: scale(0.95); }
-
-  #chat-panel{
-    transform-origin: bottom right;
-    transform: scale(0.92) translateY(12px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 260ms var(--ease), opacity 220ms var(--ease);
-  }
-  #chat-panel.open{
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  @media (prefers-reduced-motion: reduce){
-    #chat-panel{ transition: opacity 150ms linear; transform:none; }
-  }
-
-  .chat-bubble{
-    max-width: 84%;
-    padding: 0.65rem 0.9rem;
-    border-radius: 14px;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    animation: bubbleIn 220ms var(--ease);
-  }
+  #chat-panel{ transform-origin: bottom right; transform: scale(0.92) translateY(12px); opacity: 0; pointer-events: none; transition: transform 260ms var(--ease), opacity 220ms var(--ease); }
+  #chat-panel.open{ transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+  @media (prefers-reduced-motion: reduce){ #chat-panel{ transition: opacity 150ms linear; transform:none; } }
+  .chat-bubble{ max-width: 84%; padding: 0.65rem 0.9rem; border-radius: 14px; font-size: 0.875rem; line-height: 1.5; animation: bubbleIn 220ms var(--ease); }
   @keyframes bubbleIn{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
   @media (prefers-reduced-motion: reduce){ .chat-bubble{ animation:none; } }
-
-  .chat-bubble.user{ background:#DDB064; color:#14100A; border-bottom-right-radius:4px; margin-left:auto; font-weight:500; }
-  .chat-bubble.bot{ background:#20262F; color:#DDE1E8; border:1px solid rgba(255,255,255,0.06); border-bottom-left-radius:4px; }
-
+  .chat-bubble.user{ background:#3B82F6; color:#FFFFFF; border-bottom-right-radius:4px; margin-left:auto; font-weight:500; }
+  .chat-bubble.bot{ background:#F1F5F9; color:#1E293B; border:1px solid rgba(15,23,42,0.06); border-bottom-left-radius:4px; }
   .typing-dots{ display:inline-flex; gap:4px; align-items:center; padding:0.2rem 0; }
-  .typing-dots span{
-    width:6px; height:6px; border-radius:50%; background:#8A93A3;
-    animation: typingBounce 1.1s infinite ease-in-out;
-  }
+  .typing-dots span{ width:6px; height:6px; border-radius:50%; background:#64748B; animation: typingBounce 1.1s infinite ease-in-out; }
   .typing-dots span:nth-child(2){ animation-delay: 0.15s; }
   .typing-dots span:nth-child(3){ animation-delay: 0.3s; }
   @keyframes typingBounce{ 0%,60%,100%{ transform: translateY(0); opacity:0.5; } 30%{ transform: translateY(-4px); opacity:1; } }
-
   #chat-messages{ scrollbar-width: thin; }
-
-  .chat-quick{
-    font-size:0.75rem; font-weight:500; color:#C6AB7A; border:1px solid rgba(221,176,100,0.3);
-    padding:0.4rem 0.75rem; border-radius:999px; background: rgba(221,176,100,0.06);
-    transition: background 180ms var(--ease), border-color 180ms var(--ease);
-    white-space: nowrap;
-  }
-  .chat-quick:hover{ background: rgba(221,176,100,0.15); border-color: rgba(221,176,100,0.55); }
+  .chat-quick{ font-size:0.75rem; font-weight:500; color:#2563EB; border:1px solid rgba(37,99,235,0.3); padding:0.4rem 0.75rem; border-radius:999px; background: rgba(37,99,235,0.06); transition: background 180ms var(--ease), border-color 180ms var(--ease); white-space: nowrap; }
+  .chat-quick:hover{ background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.55); }
 </style>
 </head>
 
 <body class="antialiased">
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Ambient background glows (static, CSS-only — no particle canvas) -->
 <div class="glow w-[520px] h-[520px] bg-gold-500/10 top-[-120px] left-[-100px]"></div>
-<div class="glow w-[480px] h-[480px] bg-[#3D8C82]/[0.06] top-[40%] right-[-140px]"></div>
+<div class="glow w-[480px] h-[480px] bg-[#7DD3FC]/[0.06] top-[40%] right-[-140px]"></div>
 <div class="glow w-[520px] h-[420px] bg-gold-500/[0.06] bottom-[-160px] left-[20%]"></div>
 
-<!-- Navigation -->
 <nav id="site-nav" class="fixed w-full z-50 border-b border-hair">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="flex items-center justify-between h-18 py-3.5">
       <a href="#home" class="flex items-center gap-2.5 group">
-        <span class="font-serif text-xl tracking-tight text-white">NEMEX</span>
+        <span class="font-serif text-xl tracking-tight text-slate-900">NEMEX</span>
         <span class="spectrum-bar h-[3px] w-7 rounded-full opacity-90 group-hover:w-9 transition-all duration-300"></span>
       </a>
-
       <div class="hidden lg:flex items-center gap-8">
-        <a href="#dr-shinde" class="nav-link">Director</a>
+        <a href="#dr-shinde" class="nav-link">PI</a>
         <a href="#publications" class="nav-link">Publications</a>
         <a href="#research-area" class="nav-link">Research</a>
         <a href="#group" class="nav-link">Group</a>
@@ -251,25 +126,23 @@
         <a href="#contact" class="nav-link">Contact</a>
         <a href="#opportunities" class="btn btn-primary !py-2.5 !px-5 !text-sm">Join the lab</a>
       </div>
-
-      <button id="mobile-menu-btn" class="lg:hidden p-2 -mr-2 text-slate-300" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 -mr-2 text-slate-700" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
         <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
-
   <div id="mobile-menu" class="lg:hidden border-t border-hair bg-surface/95">
     <div>
       <div class="px-5 py-3 flex flex-col">
-        <a href="#dr-shinde" class="py-3 text-slate-300 border-b border-hair">Director</a>
-        <a href="#publications" class="py-3 text-slate-300 border-b border-hair">Publications</a>
-        <a href="#research-area" class="py-3 text-slate-300 border-b border-hair">Research</a>
-        <a href="#group" class="py-3 text-slate-300 border-b border-hair">Group</a>
-        <a href="#research-facilities" class="py-3 text-slate-300 border-b border-hair">Facilities</a>
-        <a href="#projects" class="py-3 text-slate-300 border-b border-hair">Projects</a>
-        <a href="#photos" class="py-3 text-slate-300 border-b border-hair">Photos</a>
-        <a href="#contact" class="py-3 text-slate-300">Contact</a>
+        <a href="#dr-shinde" class="py-3 text-slate-700 border-b border-hair">PI</a>
+        <a href="#publications" class="py-3 text-slate-700 border-b border-hair">Publications</a>
+        <a href="#research-area" class="py-3 text-slate-700 border-b border-hair">Research</a>
+        <a href="#group" class="py-3 text-slate-700 border-b border-hair">Group</a>
+        <a href="#research-facilities" class="py-3 text-slate-700 border-b border-hair">Facilities</a>
+        <a href="#projects" class="py-3 text-slate-700 border-b border-hair">Projects</a>
+        <a href="#photos" class="py-3 text-slate-700 border-b border-hair">Photos</a>
+        <a href="#contact" class="py-3 text-slate-700">Contact</a>
         <a href="#opportunities" class="btn btn-primary mt-4 mb-2">Join the lab</a>
       </div>
     </div>
@@ -278,15 +151,14 @@
 
 <main id="main">
 
-  <!-- Hero -->
   <section id="home" class="relative pt-40 pb-28 md:pt-48 md:pb-36 overflow-hidden">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="max-w-3xl reveal">
         <p class="text-sm text-gold-400/90 font-medium mb-6">Department of Physics · Indian Institute of Technology Hyderabad</p>
-        <h1 class="font-serif text-[2.5rem] leading-[1.15] sm:text-5xl md:text-6xl text-white mb-7">
+        <h1 class="font-serif text-[2.5rem] leading-[1.15] sm:text-5xl md:text-6xl text-slate-900 mb-7">
           NANOPHOTONICS AND ENERGY MATERIAL EXPLORATION LABORATORY
         </h1>
-        <p class="text-lg text-slate-400 leading-relaxed max-w-xl mb-10">
+        <p class="text-lg text-slate-600 leading-relaxed max-w-xl mb-10">
           NEMEX studies how light behaves inside nanostructured and photonic materials, then engineers that behaviour into working technology — solar-driven desalination, photocatalytic hydrogen production, and radiative cooling that needs no electricity.
         </p>
         <div class="flex flex-wrap gap-4">
@@ -295,48 +167,50 @@
         </div>
       </div>
 
-      <!-- The spectrum device, used here as the hero's characteristic visual -->
       <div class="mt-20 max-w-2xl reveal" style="transition-delay:120ms">
-       
+        <div class="spectrum-bar h-2 rounded-full"></div>
+        <div class="flex justify-between mt-2.5 text-xs text-slate-500 font-medium tracking-wide">
+          <span>400 nm</span>
+          <span>550 nm</span>
+          <span>700 nm</span>
+        </div>
+        <p class="text-sm text-slate-500 mt-3">The visible spectrum — the working range our materials are built to capture and convert.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Director -->
   <section id="dr-shinde" class="py-24 md:py-28 bg-surface border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-16 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Supervisor</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">PI</h2>
           <p class="text-slate-500 mt-1">The researcher leading the lab's scientific direction.</p>
         </div>
       </div>
-
       <div class="flex flex-col md:flex-row items-start gap-14 max-w-6xl reveal">
         <div class="w-full md:w-[300px] shrink-0">
-          <img src="https://placehold.co/480x580/1a2029/6b7280?text=Dr.+S.+L.+Shinde" alt="Portrait of Dr. Satish Laxman Shinde" class="w-full rounded-2xl border border-hair object-cover">
+          <img src="images/Satish-Laxman-Shinde.jpg" alt="Portrait of Dr. Satish Laxman Shinde" class="w-full rounded-2xl border border-hair object-cover">
         </div>
         <div class="w-full">
-          <h3 class="font-serif text-3xl text-white mb-2">Dr. Satish Laxman Shinde</h3>
+          <h3 class="font-serif text-3xl text-slate-900 mb-2">Dr. Satish Laxman Shinde</h3>
           <p class="text-gold-400 font-medium mb-8">Assistant Professor, Department of Physics, IIT Hyderabad</p>
-
           <div class="lab-card p-6 mb-8 grid sm:grid-cols-2 gap-6">
             <div class="flex items-start gap-3">
               <svg class="w-5 h-5 text-gold-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/></svg>
-              <span class="text-sm text-slate-300"><strong class="text-white font-medium block">Ph.D.</strong>Indian Institute of Science (IISc), Bengaluru</span>
+              <span class="text-sm text-slate-700"><strong class="text-slate-900 font-medium block">Ph.D.</strong>Indian Institute of Science (IISc), Bengaluru</span>
             </div>
             <div class="flex items-start gap-3">
               <svg class="w-5 h-5 text-gold-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg>
-              <span class="text-sm text-slate-300"><strong class="text-white font-medium block">Office</strong>Room PH-409, Physics Building, IITH</span>
+              <span class="text-sm text-slate-700"><strong class="text-slate-900 font-medium block">Office</strong>Room PH-409, Physics Building, IITH</span>
             </div>
           </div>
-
-          <p class="text-slate-400 leading-relaxed mb-5 max-w-2xl">
-            Dr. Shinde directs the Nanophotonics &amp; Energy Material Exploration Laboratory. His research sits at the intersection of advanced nanomaterials and renewable energy generation, drawing on a background in applied physics and nanophotonics to address pressing global challenges.
+          <p class="text-slate-600 leading-relaxed mb-5 max-w-2xl">
+            Satish Laxman Shinde directs the Nanophotonics &amp; Energy Material Exploration Laboratory. His research sits at the intersection of advanced nanomaterials and renewable energy generation, drawing on a background in applied physics and nanophotonics to address pressing global challenges.
           </p>
-          <p class="text-slate-400 leading-relaxed mb-9 max-w-2xl">
-            His primary interests span <span class="text-slate-200">nanophotonics, energy materials, photothermal energy harvesting, photocatalysis, and semiconducting devices</span> — bridging fundamental light–matter interaction at the nanoscale with scalable, real-world technologies.
+          <p class="text-slate-600 leading-relaxed mb-9 max-w-2xl">
+            His primary interests span <span class="text-slate-800">nanophotonics, energy materials, photothermal energy harvesting, photocatalysis, and semiconducting devices</span> — bridging fundamental light–matter interaction at the nanoscale with scalable, real-world technologies.
           </p>
-
           <div class="flex flex-wrap gap-4">
             <a href="https://scholar.google.com/citations?user=s3TZ-asAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-primary">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
@@ -349,19 +223,16 @@
     </div>
   </section>
 
-  <!-- Publications -->
   <section id="publications" class="py-24 md:py-28 border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-14 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Selected publications</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Selected publications</h2>
           <p class="text-slate-500 mt-1 max-w-xl">Recent contributions to journals in nanophotonics, photocatalysis, and energy materials.</p>
         </div>
       </div>
-
       <div id="pub-list" class="space-y-4 reveal"></div>
-
       <div class="mt-12">
         <a href="https://scholar.google.com/citations?user=s3TZ-asAAAAJ&hl=en" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gold-400 font-medium hover:text-gold-300 transition-colors">
           View the complete profile on Google Scholar
@@ -371,71 +242,62 @@
     </div>
   </section>
 
-  <!-- Research Area -->
   <section id="research-area" class="py-24 md:py-28 bg-surface border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-14 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Research areas</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Research areas</h2>
           <p class="text-slate-500 mt-1 max-w-2xl">Light–matter interactions applied to sustainable energy, environmental remediation, and next-generation devices.</p>
         </div>
       </div>
-
       <div id="research-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </div>
   </section>
 
-  <!-- Group -->
   <section id="group" class="py-24 md:py-28 border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-16 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Our group</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Our group</h2>
           <p class="text-slate-500 mt-1">The people driving the research at NEMEX Laboratory.</p>
         </div>
       </div>
-
       <div class="mb-20">
-        <h3 class="text-lg font-semibold text-white mb-8">PhD scholars</h3>
+        <h3 class="text-lg font-semibold text-slate-900 mb-8">PhD scholars</h3>
         <div id="phd-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
       </div>
-
       <div class="mb-20">
-        <h3 class="text-lg font-semibold text-white mb-8">MSc students</h3>
+        <h3 class="text-lg font-semibold text-slate-900 mb-8">MSc students</h3>
         <div id="msc-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
       </div>
-
       <div>
-        <h3 class="text-lg font-semibold text-white mb-8">Project students &amp; alumni</h3>
+        <h3 class="text-lg font-semibold text-slate-900 mb-8">Project students &amp; alumni</h3>
         <div id="alumni-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"></div>
       </div>
     </div>
   </section>
 
-  <!-- Facilities -->
   <section id="research-facilities" class="py-24 md:py-28 bg-surface border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-14 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Research facilities</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Research facilities</h2>
           <p class="text-slate-500 mt-1 max-w-2xl">Instruments enabling synthesis, material characterisation, and device testing.</p>
         </div>
       </div>
-
       <div id="facilities-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
     </div>
   </section>
 
-  <!-- Opportunities -->
   <section id="opportunities" class="py-24 md:py-28 border-t border-hair relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-5 sm:px-8 reveal">
       <div class="lab-card p-9 md:p-14">
         <div class="spectrum-tick h-10 mb-7"></div>
-        <h2 class="font-serif text-3xl md:text-4xl text-white mb-5">Join the laboratory</h2>
-        <p class="text-slate-400 leading-relaxed max-w-2xl mb-9">
+        <h2 class="font-serif text-3xl md:text-4xl text-slate-900 mb-5">Join the laboratory</h2>
+        <p class="text-slate-600 leading-relaxed max-w-2xl mb-9">
           PhD positions are open at NEMEX. If you hold a valid GATE/JRF fellowship and want to work on nanophotonics, energy materials, or sustainability, get in touch with Dr. Satish Laxman Shinde with your CV and research interests.
         </p>
         <a href="#contact" class="btn btn-primary">Get in touch</a>
@@ -443,90 +305,82 @@
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects" class="py-24 md:py-28 bg-surface border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-14 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Projects</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Projects</h2>
           <p class="text-slate-500 mt-1 max-w-xl">Ongoing research funded by national agencies.</p>
         </div>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
         <div class="lab-card p-8 md:p-9">
           <div class="flex items-center gap-2 text-xs font-semibold text-gold-400 uppercase tracking-wide mb-4">
             <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span> Ongoing
           </div>
-          <h3 class="font-serif text-xl text-white mb-4 leading-snug">Plasmonic nanomaterials for solar-driven water desalination</h3>
-          <p class="text-slate-400 leading-relaxed mb-7">Investigating the photothermal conversion efficiency of titanium-nitride-based composite nanostructures under broadband solar irradiation for zero-liquid-discharge applications.</p>
-          <div class="inline-flex items-center gap-2 text-sm text-slate-300 bg-black/20 border border-hair px-3.5 py-2 rounded-lg">
-            <span class="text-gold-400 font-medium">Agency</span> DST-SERB
+          <h3 class="font-serif text-xl text-slate-900 mb-4 leading-snug">Stay Continued</h3>
+          <p class="text-slate-600 leading-relaxed mb-7">Stay Tuned</p>
+          <div class="inline-flex items-center gap-2 text-sm text-slate-700 bg-blue-50 border border-hair px-3.5 py-2 rounded-lg">
+            <span class="text-gold-400 font-medium">UNKNOWN</span> BLANK
           </div>
         </div>
-
         <div class="lab-card p-8 md:p-9">
           <div class="flex items-center gap-2 text-xs font-semibold text-gold-400 uppercase tracking-wide mb-4">
             <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span> Ongoing
           </div>
-          <h3 class="font-serif text-xl text-white mb-4 leading-snug">Defect-engineered titanium dioxide for green hydrogen</h3>
-          <p class="text-slate-400 leading-relaxed mb-7">Designing defect states in earth-abundant semiconductors to extend their absorption into the visible and near-infrared for photocatalytic water splitting.</p>
-          <div class="inline-flex items-center gap-2 text-sm text-slate-300 bg-black/20 border border-hair px-3.5 py-2 rounded-lg">
-            <span class="text-gold-400 font-medium">Agency</span> MoE
+          <h3 class="font-serif text-xl text-slate-900 mb-4 leading-snug">Stay Continued</h3>
+          <p class="text-slate-600 leading-relaxed mb-7">Stay Tuned</p>
+          <div class="inline-flex items-center gap-2 text-sm text-slate-700 bg-blue-50 border border-hair px-3.5 py-2 rounded-lg">
+            <span class="text-gold-400 font-medium">UNKNOWN</span> BLANK
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Photos -->
   <section id="photos" class="py-24 md:py-28 border-t border-hair">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="section-head mb-14 reveal">
         <div class="tick spectrum-tick"></div>
         <div>
-          <h2 class="font-serif text-3xl md:text-4xl text-white">Lab photos</h2>
+          <h2 class="font-serif text-3xl md:text-4xl text-slate-900">Lab photos</h2>
           <p class="text-slate-500 mt-1">Glimpses of life and work at NEMEX.</p>
         </div>
       </div>
-
       <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 reveal"></div>
     </div>
   </section>
 
 </main>
 
-<!-- Footer -->
-<footer id="contact" class="bg-[#080A0F] border-t border-hair pt-20 pb-10">
+<footer id="contact" class="bg-[#EEF5FC] border-t border-hair pt-20 pb-10">
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
       <div>
         <div class="flex items-center gap-2.5 mb-6">
-          <span class="font-serif text-2xl text-white">NEMEX</span>
+          <span class="font-serif text-2xl text-slate-900">NEMEX</span>
           <span class="spectrum-bar h-[3px] w-8 rounded-full"></span>
         </div>
-        <p class="text-slate-400 leading-relaxed text-sm max-w-sm">
+        <p class="text-slate-600 leading-relaxed text-sm max-w-sm">
           Advancing nanophotonics and energy materials for a sustainable future. PhD positions are open — candidates with a valid GATE/JRF fellowship may write in directly.
         </p>
       </div>
-
       <div>
-        <h4 class="text-white font-semibold mb-5">Office address</h4>
-        <address class="not-italic text-slate-400 text-sm leading-relaxed space-y-1">
-          <p class="text-slate-200 font-medium mb-2">Dr. Satish Laxman Shinde</p>
+        <h4 class="text-slate-900 font-semibold mb-5">Office address</h4>
+        <address class="not-italic text-slate-600 text-sm leading-relaxed space-y-1">
+          <p class="text-slate-800 font-medium mb-2">Dr. Satish Laxman Shinde</p>
           <p>Room PH-409, Physics Building</p>
           <p>Department of Physics</p>
           <p>Indian Institute of Technology Hyderabad</p>
           <p>Kandi, Sangareddy – 502284, Telangana, India</p>
-          <p class="pt-3 mt-3 border-t border-hair text-slate-300">Phone: (040) 2359 6724</p>
+          <p class="pt-3 mt-3 border-t border-hair text-slate-700">Phone: (040) 2359 6724</p>
         </address>
       </div>
-
       <div>
-        <h4 class="text-white font-semibold mb-5">Laboratory address</h4>
-        <address class="not-italic text-slate-400 text-sm leading-relaxed space-y-1">
-          <p class="text-slate-200 font-medium mb-2">NEMEX Laboratory</p>
+        <h4 class="text-slate-900 font-semibold mb-5">Laboratory address</h4>
+        <address class="not-italic text-slate-600 text-sm leading-relaxed space-y-1">
+          <p class="text-slate-800 font-medium mb-2">NEMEX Laboratory</p>
           <p>Room PH-319</p>
           <p>Department of Physics</p>
           <p>Indian Institute of Technology Hyderabad</p>
@@ -534,7 +388,6 @@
         </address>
       </div>
     </div>
-
     <div class="border-t border-hair pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-slate-500 text-sm">© 2026 NEMEX Laboratory, IIT Hyderabad. All rights reserved.</p>
       <div class="flex gap-6 text-sm">
@@ -545,64 +398,56 @@
   </div>
 </footer>
 
-<!-- ================= AI Chatbot ================= -->
 <button id="chat-launcher" aria-label="Open lab assistant chat" aria-expanded="false" aria-controls="chat-panel"
-  class="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full bg-gradient-to-b from-gold-300 to-gold-500 text-[#14100A] flex items-center justify-center">
+  class="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full bg-gradient-to-b from-gold-300 to-gold-500 text-[#FFFFFF] flex items-center justify-center">
   <svg id="chat-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-1.06 0-2.076-.163-3.02-.463L3 21l1.5-4.05C3.55 15.62 3 13.87 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
   <svg id="chat-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
 </button>
 
 <div id="chat-panel" role="dialog" aria-modal="false" aria-label="NEMEX Lab assistant"
   class="fixed z-[65] bottom-24 right-6 w-[calc(100vw-3rem)] max-w-[380px] h-[70vh] max-h-[560px] bg-panel border border-hair2 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-
   <div class="flex items-center justify-between px-5 py-4 border-b border-hair bg-card/60 shrink-0">
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center text-[#14100A] font-serif font-semibold">N</div>
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center text-[#FFFFFF] font-serif font-semibold">N</div>
       <div>
-        <p class="text-white text-sm font-semibold leading-tight">NEMEX Assistant</p>
+        <p class="text-slate-900 text-sm font-semibold leading-tight">NEMEX Assistant</p>
         <p class="text-xs text-slate-500 leading-tight">Usually replies in a moment</p>
       </div>
     </div>
-    <button id="chat-close-btn" aria-label="Close chat" class="text-slate-500 hover:text-white transition-colors p-1">
+    <button id="chat-close-btn" aria-label="Close chat" class="text-slate-500 hover:text-slate-900 transition-colors p-1">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
-
   <div id="chat-messages" class="flex-1 overflow-y-auto px-4 py-5 flex flex-col gap-3"></div>
-
   <div id="chat-quick-row" class="px-4 pb-3 flex gap-2 overflow-x-auto shrink-0"></div>
-
   <form id="chat-form" class="border-t border-hair p-3 flex items-end gap-2 shrink-0">
     <label for="chat-input" class="sr-only">Message the NEMEX assistant</label>
     <textarea id="chat-input" rows="1" placeholder="Ask about research, publications, or joining the lab…"
-      class="flex-1 resize-none bg-card border border-hair rounded-xl px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500/60 max-h-28"></textarea>
+      class="flex-1 resize-none bg-card border border-hair rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-gold-500/60 max-h-28"></textarea>
     <button type="submit" aria-label="Send message"
-      class="shrink-0 w-10 h-10 rounded-xl bg-gold-500 hover:bg-gold-400 text-[#14100A] flex items-center justify-center transition-colors disabled:opacity-40" id="chat-send-btn">
+      class="shrink-0 w-10 h-10 rounded-xl bg-gold-500 hover:bg-gold-400 text-[#FFFFFF] flex items-center justify-center transition-colors disabled:opacity-40" id="chat-send-btn">
       <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
     </button>
   </form>
 </div>
 
 <script>
-/* =====================================================================
-   DATA — content lives here so markup stays clean and reusable.
-   ===================================================================== */
 const PUBLICATIONS = [
-  { year: "2013", title: "Temperature Dependent Photoluminescence of Cu2O Microstructures: Exciton-Phonon Interaction and Defect States", authors: "SL Shinde, KK Nanda", journal: "The Journal of Physical Chemistry C 117 (8), 4235-4241", link: "https://doi.org/10.1021/acsami.5b10770" }, //
+  { year: "2013", title: "Temperature Dependent Photoluminescence of Cu2O Microstructures: Exciton-Phonon Interaction and Defect States", authors: "SL Shinde, KK Nanda", journal: "The Journal of Physical Chemistry C 117 (8), 4235-4241", link: "https://doi.org/10.1021/acsami.5b10770" },
   { year: "2018", title: "Enhanced Solar Light Absorption and Photoelectrochemical Conversion Using TiN Nanoparticle-Incorporated C3N4–C Dot Sheets", authors: "SL Shinde, S Ishii, TD Dao, RP Sugavaneshwar, T Takei, KK Nanda, T Nagao", journal: "ACS Applied Materials & Interfaces 10 (3), 2460-2468", link: "https://doi.org/10.1021/acsami.7b15066" },
-  { year: "2019", title: "All-ceramic solar-driven water purifier based on anodized aluminum oxide and plasmonic titanium nitride", authors: "M Kaur, S Ishii, SL Shinde, T Nagao", journal: "Advanced Sustainable Systems 3 (5), 1800112", link: "https://doi.org/10.1002/adsu.201800112" }, //
-  { year: "2019", title: "Nonmetallic materials for plasmonic hot carrier excitation", authors: "S Ishii, SL Shinde, T Nagao", journal: "Advanced Optical Materials 7 (14), 1800603", link: "https://doi.org/10.1002/adom.201800603" }, //
-  { year: "2012", title: "Facile synthesis of large area porous Cu2O as super hydrophobic yellow-red phosphors", authors: "SL Shinde, KK Nanda", journal: "RSC advances 2 (30), 11343-11350", link: "https://doi.org/10.1039/C2RA20066J" }, //
-  { year: "2020", title: "Marimo-bead-supported core–shell nanocomposites of titanium nitride and chromium-doped titanium dioxide as a highly efficient water-floatable green photocatalyst", authors: "M Kaur, SL Shinde, S Ishii, W Jevasuwan, N Fukata, MW Yu, Y Li, J Ye, ...", journal: "ACS applied materials & interfaces 12 (13), 15150-15160", link: "https://doi.org/10.1021/acsami.0c03781" }, //
-  { year: "2018", title: "Photon-free degradation of dyes by Ge/GeO2 porous microstructures", authors: "SL Shinde, KK Nanda", journal: "ACS Sustainable Chemistry & Engineering 7 (1), 498-508", link: "https://doi.org/10.1021/acssuschemeng.8b05549" }, //
-  { year: "2018", title: "Solid-state synthesis of monolithic hierarchical porous Cu2O and its hydrogen evolution performance", authors: "SL Shinde, S Ishii, T Nagao", journal: "ACS Applied Energy Materials 1 (6), 2433-2438", link: "https://scholar.google.com/scholar?q=Solid-state+synthesis+of+monolithic+hierarchical+porous+Cu2O" }, //
-  { year: "2021", title: "Sub-band gap photodetection from the titanium nitride/germanium heterostructure", authors: "SL Shinde, S Ishii, T Nagao", journal: "ACS applied materials & interfaces 13 (2), 3122-3130", link: "https://scholar.google.com/scholar?q=Sub-band+gap+photodetection+from+the+titanium+nitride%2Fgermanium+heterostructure" }, //
-  { year: "2020", title: "Direct observation of photoinduced charge separation at transition-metal nitride–semiconductor interfaces", authors: "MW Yu, S Ishii, SL Shinde, NK Tanjaya, KP Chen, T Nagao", journal: "ACS applied materials & interfaces 13 (1), 1860-1867", link: "https://doi.org/10.1021/acsami.0c14690" }, //
-  { year: "2017", title: "Titanium nitride nanoparticle-loaded transparent microfibers for all-ceramic microfibrous solar steam generators", authors: "M Kaur, S Ishii, SL Shinde, T Nagao", journal: "ACS Sustainable Chemistry & Engineering 5 (10), 8523-8528", link: "https://scholar.google.com/scholar?q=Titanium+nitride+nanoparticle-loaded+transparent+microfibers" }, //
-  { year: "2013", title: "Towards the understanding of formation of micro/nano holes of Ge/GeO2 through phase mapping", authors: "SL Shinde, KK Nanda", journal: "CrystEngComm 15 (40), 8056-8061", link: "https://doi.org/10.1039/C3CE00078H" }, //
-  { year: "2024", title: "Ball-milled MoS2 with graphene shows enhanced catalytic activity for hydrogen evolution reaction", authors: "L Li, SL Shinde, T Fujita, T Kondo", journal: "Science and Technology of Advanced Materials 25 (1), 2359360", link: "https://doi.org/10.1080/14686996.2024.2359360" }, //
-  { year: "2015", title: "High indium non-polar InGaN clusters with infrared sensitivity grown by PAMBE", authors: "S Mukundan, L Ravikiran, P A, N G, SL Shinde, KK Nanda, MRR Krishnan", journal: "AIP Advances 5 (3)", link: "https://doi.org/10.1063/1.4914842" }, //
-  { year: "2014", title: "Multiline operation from a wide-bandgap non-contact optical probe", authors: "SL Shinde, KK Nanda", journal: "Scientific Reports 4 (1), 4821", link: "https://scholar.google.com/scholar?q=Multiline+operation+from+a+wide-bandgap+non-contact+optical+probe" } //
+  { year: "2019", title: "All-ceramic solar-driven water purifier based on anodized aluminum oxide and plasmonic titanium nitride", authors: "M Kaur, S Ishii, SL Shinde, T Nagao", journal: "Advanced Sustainable Systems 3 (5), 1800112", link: "https://doi.org/10.1002/adsu.201800112" },
+  { year: "2019", title: "Nonmetallic materials for plasmonic hot carrier excitation", authors: "S Ishii, SL Shinde, T Nagao", journal: "Advanced Optical Materials 7 (14), 1800603", link: "https://doi.org/10.1002/adom.201800603" },
+  { year: "2012", title: "Facile synthesis of large area porous Cu2O as super hydrophobic yellow-red phosphors", authors: "SL Shinde, KK Nanda", journal: "RSC advances 2 (30), 11343-11350", link: "https://doi.org/10.1039/C2RA20066J" },
+  { year: "2020", title: "Marimo-bead-supported core–shell nanocomposites of titanium nitride and chromium-doped titanium dioxide as a highly efficient water-floatable green photocatalyst", authors: "M Kaur, SL Shinde, S Ishii, W Jevasuwan, N Fukata, MW Yu, Y Li, J Ye, et al.", journal: "ACS applied materials & interfaces 12 (13), 15150-15160", link: "https://doi.org/10.1021/acsami.0c03781" },
+  { year: "2018", title: "Photon-free degradation of dyes by Ge/GeO2 porous microstructures", authors: "SL Shinde, KK Nanda", journal: "ACS Sustainable Chemistry & Engineering 7 (1), 498-508", link: "https://doi.org/10.1021/acssuschemeng.8b05549" },
+  { year: "2018", title: "Solid-state synthesis of monolithic hierarchical porous Cu2O and its hydrogen evolution performance", authors: "SL Shinde, S Ishii, T Nagao", journal: "ACS Applied Energy Materials 1 (6), 2433-2438", link: "https://scholar.google.com/scholar?q=Solid-state+synthesis+of+monolithic+hierarchical+porous+Cu2O" },
+  { year: "2021", title: "Sub-band gap photodetection from the titanium nitride/germanium heterostructure", authors: "SL Shinde, S Ishii, T Nagao", journal: "ACS applied materials & interfaces 13 (2), 3122-3130", link: "https://scholar.google.com/scholar?q=Sub-band+gap+photodetection+from+the+titanium+nitride%2Fgermanium+heterostructure" },
+  { year: "2020", title: "Direct observation of photoinduced charge separation at transition-metal nitride–semiconductor interfaces", authors: "MW Yu, S Ishii, SL Shinde, NK Tanjaya, KP Chen, T Nagao", journal: "ACS applied materials & interfaces 13 (1), 1860-1867", link: "https://doi.org/10.1021/acsami.0c14690" },
+  { year: "2017", title: "Titanium nitride nanoparticle-loaded transparent microfibers for all-ceramic microfibrous solar steam generators", authors: "M Kaur, S Ishii, SL Shinde, T Nagao", journal: "ACS Sustainable Chemistry & Engineering 5 (10), 8523-8528", link: "https://scholar.google.com/scholar?q=Titanium+nitride+nanoparticle-loaded+transparent+microfibers" },
+  { year: "2013", title: "Towards the understanding of formation of micro/nano holes of Ge/GeO2 through phase mapping", authors: "SL Shinde, KK Nanda", journal: "CrystEngComm 15 (40), 8056-8061", link: "https://doi.org/10.1039/C3CE00078H" },
+  { year: "2024", title: "Ball-milled MoS2 with graphene shows enhanced catalytic activity for hydrogen evolution reaction", authors: "L Li, SL Shinde, T Fujita, T Kondo", journal: "Science and Technology of Advanced Materials 25 (1), 2359360", link: "https://doi.org/10.1080/14686996.2024.2359360" },
+  { year: "2015", title: "High indium non-polar InGaN clusters with infrared sensitivity grown by PAMBE", authors: "S Mukundan, L Ravikiran, P A, N G, SL Shinde, KK Nanda, MRR Krishnan", journal: "AIP Advances 5 (3)", link: "https://doi.org/10.1063/1.4914842" },
+  { year: "2014", title: "Multiline operation from a wide-bandgap non-contact optical probe", authors: "SL Shinde, KK Nanda", journal: "Scientific Reports 4 (1), 4821", link: "https://scholar.google.com/scholar?q=Multiline+operation+from+a+wide-bandgap+non-contact+optical+probe" }
 ];
 
 const RESEARCH_AREAS = [
@@ -615,15 +460,20 @@ const RESEARCH_AREAS = [
 ];
 
 const PHD_STUDENTS = [
-  { name: "Taniya Rabha", detail: "Joined Aug 2023 · MoE<br>M.Sc, NIT Meghalaya", email: "ph23resch11018@iith.ac.in" },
-  { name: "Arathi Babu", detail: "Joined Aug 2023 · DST Inspire<br>M.Sc, Kannur University", email: "ph23ch11004@iith.ac.in" },
-  { name: "Anitha Thomas", detail: "Joined Aug 2024 · MoE<br>M.Sc", email: "ph24resch11007@iith.ac.in" },
-  { name: "Balaji A L", detail: "Joined Jan 2025<br>PhD Scholar", email: "Ph25resch01006@iith.ac.in" },
+  { name: "Taniya Rabha", detail: "Joined Aug 2023 · MoE<br>PhD Scholar", email: "ph23resch11018@iith.ac.in" },
+  { name: "Arathi Babu", detail: "Joined Aug 2023 · DST Inspire<br>PhD Scholar", email: "ph23ch11004@iith.ac.in" },
+  { name: "Anitha Thomas", detail: "Joined Aug 2024 · MoE<br>PhD Scholar", email: "ph24resch11007@iith.ac.in" },
+  { name: "Balaji A L", detail: "Joined Jan 2025 · MoE<br>PhD Scholar", email: "ph26resch01006@iith.ac.in" },
 ];
 
-const MSC_STUDENTS = ["Mohit Kalera", "Rahul Kumar R", "Vaishali Vashishtha", "Prem Kumar", "Pranesh Yadav", "Jay Shaw", "Aditya Roy"];
+const MSC_STUDENTS = [
+  { name: "Prem Kumar", email: "ph25mscst11022@iith.ac.in" },
+  { name: "Pranesh Yadav", email: "ph25mscst11021@iith.ac.in" },
+  { name: "Jayashaw Kumar", email: "ph25mscst11015@iith.ac.in" },
+  { name: "Aditya Roy", email: "ph25mscst11005@iith.ac.in" },
+];
 
-const ALUMNI = ["Jeremi C. Zodnpuana", "Nikita Talvandhe"];
+const ALUMNI = ["Jeremi C. Zodnpuana", "Nikita Talvandhe", "Mohit Kalera", "Rahul Kumar R", "Vaishali Vashishtha"];
 
 const FACILITIES = [
   { name: "CH Instruments", brand: "Electrochemical workstation" },
@@ -644,17 +494,13 @@ const PHOTOS = [
   { caption: "Running experiments", tag: "Experiment" },
 ];
 
-/* =====================================================================
-   RENDER — build markup from data (replaces legacy document.write,
-   which blocks parsing and breaks if it ever runs after page load).
-   ===================================================================== */
 function el(html){ const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content; }
 
 document.getElementById('pub-list').append(el(PUBLICATIONS.map(p => `
   <a href="${p.link}" target="_blank" rel="noopener" class="lab-card group flex flex-col md:flex-row gap-5 items-start md:items-center p-6 md:p-7">
-    <div class="bg-black/25 border border-hair2 text-gold-400 font-semibold px-4 py-2.5 rounded-lg text-sm shrink-0">${p.year}</div>
+    <div class="bg-blue-50 border border-hair2 text-gold-400 font-semibold px-4 py-2.5 rounded-lg text-sm shrink-0">${p.year}</div>
     <div class="flex-grow">
-      <h3 class="text-slate-100 font-medium mb-1.5 group-hover:text-gold-300 transition-colors leading-snug">${p.title}</h3>
+      <h3 class="text-slate-800 font-medium mb-1.5 group-hover:text-gold-300 transition-colors leading-snug">${p.title}</h3>
       <p class="text-slate-500 text-sm mb-1">${p.authors}</p>
       <p class="text-slate-500 text-sm italic">${p.journal}</p>
     </div>
@@ -667,11 +513,11 @@ document.getElementById('pub-list').append(el(PUBLICATIONS.map(p => `
 
 document.getElementById('research-grid').append(el(RESEARCH_AREAS.map(a => `
   <div class="lab-card overflow-hidden flex flex-col">
-    <div class="h-44 overflow-hidden bg-black/30 shrink-0">
-      <img src="https://placehold.co/600x400/151a24/6b7280?text=${a.img}" alt="" class="w-full h-full object-cover opacity-80">
+    <div class="h-44 overflow-hidden bg-blue-50 shrink-0">
+      <img src="https://placehold.co/600x400/dbeafe/1e3a8a?text=${a.img}" alt="" class="w-full h-full object-cover opacity-80">
     </div>
     <div class="p-6 flex flex-col flex-grow">
-      <h3 class="text-white font-semibold mb-2.5">${a.title}</h3>
+      <h3 class="text-slate-900 font-semibold mb-2.5">${a.title}</h3>
       <p class="text-slate-500 text-sm leading-relaxed flex-grow">${a.desc}</p>
     </div>
   </div>
@@ -679,66 +525,60 @@ document.getElementById('research-grid').append(el(RESEARCH_AREAS.map(a => `
 
 document.getElementById('phd-grid').append(el(PHD_STUDENTS.map(s => `
   <div class="lab-card overflow-hidden text-center flex flex-col">
-    <div class="aspect-[3/4] w-full overflow-hidden bg-black/30">
-      <img src="https://placehold.co/400x500/1a2029/6b7280?text=${encodeURIComponent(s.name.split(' ')[0])}" alt="${s.name}" class="w-full h-full object-cover">
+    <div class="aspect-[3/4] w-full overflow-hidden bg-blue-50">
+      <img src="https://placehold.co/400x500/dbeafe/1e3a8a?text=${encodeURIComponent(s.name.split(' ')[0])}" alt="${s.name}" class="w-full h-full object-cover">
     </div>
     <div class="p-5 flex flex-col flex-grow">
-      <h4 class="text-white font-semibold">${s.name}</h4>
+      <h4 class="text-slate-900 font-semibold">${s.name}</h4>
       <p class="text-xs text-gold-400/90 font-medium mt-1.5 mb-3">PhD Scholar</p>
       <p class="text-sm text-slate-500 mb-4 flex-grow">${s.detail}</p>
-      <a href="mailto:${s.email}" class="text-xs text-slate-400 hover:text-gold-400 transition-colors break-all bg-black/25 py-2 px-3 rounded-lg border border-hair">${s.email}</a>
+      <a href="mailto:${s.email}" class="text-xs text-slate-600 hover:text-gold-400 transition-colors break-all bg-blue-50 py-2 px-3 rounded-lg border border-hair">${s.email}</a>
     </div>
   </div>
 `).join('')));
 
-document.getElementById('msc-grid').append(el(MSC_STUDENTS.map((name, i) => {
-  const email = `ph24msc${1000 + i}@iith.ac.in`;
-  return `
+document.getElementById('msc-grid').append(el(MSC_STUDENTS.map((s) => `
     <div class="lab-card p-4 flex items-center gap-3.5">
-      <div class="w-11 h-11 rounded-full bg-black/30 border border-hair flex items-center justify-center text-slate-400 font-serif font-semibold shrink-0">${name.charAt(0)}</div>
+      <div class="w-11 h-11 rounded-full bg-blue-50 border border-hair flex items-center justify-center text-slate-600 font-serif font-semibold shrink-0">${s.name.charAt(0)}</div>
       <div class="overflow-hidden">
-        <h4 class="text-sm font-semibold text-slate-200 truncate">${name}</h4>
-        <p class="text-xs text-slate-500 truncate mt-0.5">${email}</p>
+        <h4 class="text-sm font-semibold text-slate-800 truncate">${s.name}</h4>
+        <p class="text-xs text-slate-500 truncate mt-0.5">${s.email}</p>
       </div>
-    </div>`;
-}).join('')));
+    </div>
+`).join('')));
 
 document.getElementById('alumni-grid').append(el(ALUMNI.map(name => `
   <div class="lab-card p-6 flex flex-col items-center text-center">
-    <h4 class="text-sm font-semibold text-slate-200">${name}</h4>
+    <h4 class="text-sm font-semibold text-slate-800">${name}</h4>
     <p class="text-xs text-slate-500 mt-2 tracking-wide">Alumni</p>
   </div>
 `).join('')));
 
 document.getElementById('facilities-grid').append(el(FACILITIES.map(f => `
   <div class="lab-card overflow-hidden">
-    <div class="aspect-[4/3] bg-black/30 p-3 flex items-center justify-center">
-      <img src="https://placehold.co/400x300/1a2029/6b7280?text=${encodeURIComponent(f.name)}" alt="${f.name}" class="w-full h-full object-cover rounded opacity-85">
+    <div class="aspect-[4/3] bg-blue-50 p-3 flex items-center justify-center">
+      <img src="https://placehold.co/400x300/dbeafe/1e3a8a?text=${encodeURIComponent(f.name)}" alt="${f.name}" class="w-full h-full object-cover rounded opacity-85">
     </div>
     <div class="p-4 text-center border-t border-hair">
-      <h3 class="text-slate-200 font-semibold text-sm">${f.name}</h3>
+      <h3 class="text-slate-800 font-semibold text-sm">${f.name}</h3>
       <p class="text-xs text-slate-500 mt-1">${f.brand}</p>
     </div>
   </div>
 `).join('')));
 
 document.getElementById('photo-grid').append(el(PHOTOS.map(p => `
-  <div class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-black/30 border border-hair ${p.span || ''}">
-    <img src="https://placehold.co/800x600/1a2029/6b7280?text=${p.tag}" alt="${p.caption}" class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+  <div class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-blue-50 border border-hair ${p.span || ''}">
+    <img src="https://placehold.co/800x600/dbeafe/1e3a8a?text=${p.tag}" alt="${p.caption}" class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
     <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-      <p class="text-white text-sm font-medium">${p.caption}</p>
+      <p class="text-slate-900 text-sm font-medium">${p.caption}</p>
     </div>
   </div>
 `).join('')));
 
-/* =====================================================================
-   Mobile menu
-   ===================================================================== */
 const menuBtn = document.getElementById('mobile-menu-btn');
 const menu = document.getElementById('mobile-menu');
 const iconOpen = document.getElementById('icon-open');
 const iconClose = document.getElementById('icon-close');
-
 function setMenu(open){
   menu.classList.toggle('open', open);
   menuBtn.setAttribute('aria-expanded', String(open));
@@ -748,9 +588,6 @@ function setMenu(open){
 menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
 document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => setMenu(false)));
 
-/* =====================================================================
-   Scroll reveal — one restrained IntersectionObserver-driven treatment
-   ===================================================================== */
 const revealTargets = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
@@ -761,9 +598,6 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 revealTargets.forEach(t => revealObserver.observe(t));
 
-/* =====================================================================
-   AI Chatbot
-   ===================================================================== */
 const chatLauncher = document.getElementById('chat-launcher');
 const chatPanel = document.getElementById('chat-panel');
 const chatCloseBtn = document.getElementById('chat-close-btn');
@@ -783,7 +617,6 @@ const QUICK_PROMPTS = [
 ];
 
 let chatOpened = false;
-
 function openChat(){
   chatPanel.classList.add('open');
   chatLauncher.setAttribute('aria-expanded', 'true');
@@ -851,35 +684,9 @@ function hideTyping(){
   document.getElementById('typing-indicator')?.remove();
 }
 
-/* ============================================================
-   CONNECT A REAL AI BACKEND HERE
-   ------------------------------------------------------------
-   getAssistantReply() below is a lightweight, fully-offline
-   placeholder so the chat widget works out of the box. To wire
-   it up to a real model, replace the body of this function with
-   a call to your own backend endpoint — never call an AI
-   provider's API directly from this file, since that would
-   expose your API key to every visitor:
-
-     async function getAssistantReply(userText) {
-       const res = await fetch('/api/chat', {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ message: userText })
-       });
-       if (!res.ok) throw new Error('Chat request failed');
-       const data = await res.json();
-       return data.reply;
-     }
-
-   Your '/api/chat' route (Node/Express, a serverless function,
-   etc.) is where the real Anthropic/OpenAI API key should live,
-   as a server-side environment variable.
-   ============================================================ */
 async function getAssistantReply(userText){
   const q = userText.toLowerCase();
   await new Promise(r => setTimeout(r, 550 + Math.random() * 400));
-
   if (/research|nanophoton|photocatal|desalin|hydrogen|cooling|study|work on/.test(q)) {
     return "NEMEX researches nanophotonics and energy materials — solar water desalination, plasmonic photocatalysis, solar hydrogen production, and radiative cooling. You can see the full list under the Research section above.";
   }
@@ -895,8 +702,8 @@ async function getAssistantReply(userText){
   if (/facilit|equipment|instrument/.test(q)) {
     return "The lab is equipped with a solar simulator, electrochemical workstation, tube furnace, glove box, UV-Vis spectrometer, and IR camera, among other instruments — see the Facilities section for the full list.";
   }
-  if (/director|shinde|professor|who runs|who leads/.test(q)) {
-    return "The lab is directed by Dr. Satish Laxman Shinde, Assistant Professor in the Department of Physics at IIT Hyderabad. His profile and research interests are in the Director section.";
+  if (/director|pi|shinde|professor|who runs|who leads/.test(q)) {
+    return "The lab is led by Dr. Satish Laxman Shinde, Assistant Professor in the Department of Physics at IIT Hyderabad. His profile and research interests are in the PI section.";
   }
   if (/hi|hello|hey/.test(q)) {
     return "Hello! Ask me about our research areas, publications, or how to join the lab.";
